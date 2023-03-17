@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="欢迎来到我的博客, 阳光的个人博客">
+    <meta name="keywords" content="vant组件 AddressList  van-address-edit实现输入地址出现详细地址功能实现, 阳光的个人博客">
     <meta name="description" content="sunshine">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>欢迎来到我的博客 | 阳光的个人博客</title>
+    <title>vant组件 AddressList  van-address-edit实现输入地址出现详细地址功能实现 | 阳光的个人博客</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">欢迎来到我的博客</h1>
+                    <h1 class="description center-align post-title">vant组件 AddressList  van-address-edit实现输入地址出现详细地址功能实现</h1>
                 </div>
             </div>
         </div>
@@ -443,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-02-02
+                    2020-03-17
                 </div>
                 
 
@@ -464,8 +464,16 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>欢迎来到我的博客!此博客主要是用于开发过程中的错误记录和技术分享，如果你想可以在这篇文章下留下你的名字。</p>
+                <h2 id="第一步-根据提示获取-ak-api-和请求地址"><a href="#第一步-根据提示获取-ak-api-和请求地址" class="headerlink" title="第一步: 根据提示获取 ak(api) 和请求地址"></a>第一步: 根据提示获取 ak(api) 和请求地址</h2><p><a target="_blank" rel="noopener" href="https://lbsyun.baidu.com/index.php?title=webapi/place-suggestion-api">Web 服务 API | 百度地图 API SDK (baidu.com)</a></p>
+<h2 id="第二步-用-node-写一个后端接口-发送请求-解决跨域-运行服务器"><a href="#第二步-用-node-写一个后端接口-发送请求-解决跨域-运行服务器" class="headerlink" title="第二步: 用 node 写一个后端接口 发送请求(解决跨域) ,运行服务器"></a>第二步: 用 node 写一个后端接口 发送请求(解决跨域) ,运行服务器</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">// 创建http 这个http是我们安装好node自带的 我们要通过这个创建服务器</span><br><span class="line">let http = require(&#x27;http&#x27;);</span><br><span class="line">// 我们要实现跨域要看别人的协议是什么 是http是就引入https</span><br><span class="line">let https = require(&#x27;https&#x27;);</span><br><span class="line"></span><br><span class="line">let moduleSetHtml = require(&quot;./module/setHtml&quot;);</span><br><span class="line">let moduleSetStatus = require(&quot;./module/setStatus&quot;);</span><br><span class="line"></span><br><span class="line">// 创建服务器  这里服务器里函数 有两个参数 第一个参数表示浏览器传给我们的数据信息 第二个参数是我们返回给浏览器的数据</span><br><span class="line">http.createServer((req, res) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">    let address = new URL(req.url, &quot;http://127.0.0.1&quot;);</span><br><span class="line">    let param = address.pathname;</span><br><span class="line">    if (address.pathname == &#x27;/favicon.ico&#x27;) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    const searchParams = address.searchParams</span><br><span class="line">    let query = searchParams.get(&#x27;query&#x27;)</span><br><span class="line">    let region = searchParams.get(&#x27;region&#x27;)</span><br><span class="line">    console.log(query, region);</span><br><span class="line">    //如果要解决前端向我们的跨域问题 要在请求头设置第二个参数设置 cors</span><br><span class="line">    res.writeHead(200, &#123;</span><br><span class="line">        &#x27;Content-Type&#x27;: &quot;application/json;charset:utf-8&quot;,</span><br><span class="line">        &#x27;access-control-allow-origin&#x27;: &quot;*&quot;  //这里表示设置请求来源全部允许</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    /* 我们请求的顺序的 先是前端传给我们请求 然后我们去请求别人的数据 得到后返回给后端</span><br><span class="line">    因为前端直接去请求别人的数据会存在跨域问题 但是我们去就不存在这个问题 这样就解决了跨域问题</span><br><span class="line"> */</span><br><span class="line">    switch (param) &#123;</span><br><span class="line">        case &#x27;/name&#x27;:</span><br><span class="line">            getHtml(query, region, (data) =&gt; &#123;</span><br><span class="line">                res.end(data);</span><br><span class="line">            &#125;)</span><br><span class="line">            break;</span><br><span class="line">        default:</span><br><span class="line">            res.end(&quot;404&quot;)</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //每次写代码需要重新重启服务器才能生效 ctrl + c 退出</span><br><span class="line">&#125;).listen(3000, () =&gt; &#123;  //这里我们还可以设置一个监听 第一个参数为端口号 第二个参数可以设置一个函数  这个函数内容在浏览器启动后会自动触发</span><br><span class="line">    console.log(&quot;服务器已经启动&quot;);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">function getHtml(query, region, callback) &#123;</span><br><span class="line">    let data = &quot;&quot;;</span><br><span class="line">    // get方法 获取到数据 第一个参数为地址 第二个参数为一个函数</span><br><span class="line">    https.get(`https://api.map.baidu.com/place/v2/suggestion?query=$&#123;query&#125;&amp;region=$&#123;region&#125;&amp;city_limit=true&amp;output=json&amp;ak=7gQZIbRzFvUDKi2lTYubiNUjV4v6X61T`, res =&gt; &#123;</span><br><span class="line">        // data 表示数据 在一点一点的传输回来 所以我们要定义一个变量 不停的接收他</span><br><span class="line">        res.on(&#x27;data&#x27;, chunk =&gt; &#123;   //这里才能接收数据  所以要设置一个参数</span><br><span class="line">            data += chunk;</span><br><span class="line">            console.log(chunk);</span><br><span class="line">        &#125;)</span><br><span class="line">        // end 表示数据已经完全发送完毕了 这时候我们就发送数据给前端了</span><br><span class="line">        res.on(&#x27;end&#x27;, () =&gt; &#123;</span><br><span class="line">            console.log(data);</span><br><span class="line">            callback(data)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="第三步-前端页面发送请求-这里用的-ts-js-直接无视后面的-xxx-即可"><a href="#第三步-前端页面发送请求-这里用的-ts-js-直接无视后面的-xxx-即可" class="headerlink" title="第三步: 前端页面发送请求 这里用的 ts js 直接无视后面的 : xxx 即可"></a>第三步: 前端页面发送请求 这里用的 ts js 直接无视后面的 : xxx 即可</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import &#123; reactive &#125; from &quot;vue&quot;;</span><br><span class="line">import axios from &quot;axios&quot;;</span><br><span class="line"></span><br><span class="line">export default async function getDetailAddress(query: string, region: string) &#123;</span><br><span class="line"></span><br><span class="line">    type Request&lt;T&gt; = &#123;</span><br><span class="line">        data: &#123;</span><br><span class="line">            result: [T]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    type Result = &#123;</span><br><span class="line">        name: string</span><br><span class="line">        address: string</span><br><span class="line">    &#125;</span><br><span class="line">    const detail = reactive&lt;Result[]&gt;([])</span><br><span class="line"></span><br><span class="line">    const &#123; data &#125;: Request&lt;Result&gt; = await axios.get(`http://localhost:3000/name?query=$&#123;query&#125;&amp;region=$&#123;region&#125;`)</span><br><span class="line">    data.result.filter(item =&gt; detail.push(&#123; name: item.name, address: item.address &#125;))</span><br><span class="line"></span><br><span class="line">    // console.log(data);</span><br><span class="line">    // console.log(detail);</span><br><span class="line"></span><br><span class="line">    return detail</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/* 引入获取列表函数 */</span><br><span class="line">import getDetailAddress from &#x27;@/hooks/detailAddress.js&#x27;;</span><br><span class="line"></span><br><span class="line">const onChangeDetail = async (val: string) =&gt; &#123;</span><br><span class="line">    const data = await getDetailAddress(val, province.value)</span><br><span class="line">    searchResult.value = (data as unknown as address[])</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="页面使用效果"><a href="#页面使用效果" class="headerlink" title="页面使用效果:"></a>页面使用效果:</h2><img src="/images/image.png">
+
+<h3 id="使用问题-因为请求地址需要填入-region-也就是省-但是不能输入后直接获取到省-必须得用户先选好地区-再获取选好的地区的省-再发送请求才能实现-也就是用户得先选好地区-这个功能才能实现"><a href="#使用问题-因为请求地址需要填入-region-也就是省-但是不能输入后直接获取到省-必须得用户先选好地区-再获取选好的地区的省-再发送请求才能实现-也就是用户得先选好地区-这个功能才能实现" class="headerlink" title="使用问题: 因为请求地址需要填入 region 也就是省 但是不能输入后直接获取到省 必须得用户先选好地区 再获取选好的地区的省 再发送请求才能实现 也就是用户得先选好地区 这个功能才能实现"></a>使用问题: 因为请求地址需要填入 region 也就是省 但是不能输入后直接获取到省 必须得用户先选好地区 再获取选好的地区的省 再发送请求才能实现 也就是用户得先选好地区 这个功能才能实现</h3>
                 
             </div>
             <hr/>
@@ -491,7 +499,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://sunshineperson.github.io/2023/02/02/hello-world/">https://sunshineperson.github.io/2023/02/02/hello-world/</a>
+                    <a href="https://sunshineperson.github.io/2020/03/17/postname/">https://sunshineperson.github.io/2020/03/17/postname/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -718,10 +726,9 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2023/02/02/hello-world/">
                     <div class="card-image">
@@ -739,9 +746,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-02
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-02
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -750,7 +757,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -758,7 +764,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
                 <a href="/2020/03/17/postname/">
@@ -788,6 +794,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
